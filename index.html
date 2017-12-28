@@ -34,11 +34,11 @@
 </style>
 <body>
 <div id="app">
-    <vue-force-screen ref="forcescreen" align="crop" width="750px" height="1206px" type="portrait">
-    <vue-fix-dom slot="background" ref="fixdom" align="crop"  width="750px" height="1206px">
+    <vue-force-screen ref="forcescreen" transition-time="2s" align="crop" width="750px" height="1206px" type="portrait" :block="true" block-message="据说竖屏更精彩！">
+    <div slot="background" ref="fixdom">
     <img style="display: block" width="100%"  src="http://h5.2smart.cn/2017/sharp/images/index_bg.jpg"
     @load="update"/>
-    </vue-fix-dom>
+    </div>
         <div slot="content" class="fill" style="background: rgba(0,0,0,0.4);box-sizing: content-box">
 
             <img style="margin: 10px" width="50px" src="https://cn.vuejs.org/images/logo.png"/>
@@ -46,14 +46,12 @@
         </div>
     </vue-force-screen>
 
-    <!--<vue-force-screen ref="forcescreen" align="crop" width="1200px" height="750px" type="landscape">-->
-        <!--<vue-fix-dom slot="background" ref="fixdom" align="crop" width="2320px" height="1480px">-->
+    <!--<vue-force-screen ref="forcescreen" align="crop" width="1200px" height="750px" type="landscape" :block="true" block-message="据说横屏更精彩！">-->
+        <!--<div slot="background" ref="fixdom" >-->
             <!--<img style="display: block" width="100%" src="http://h5.2smart.cn/2017/samsung/media/bg.jpg"-->
                  <!--@load="update"/>-->
-
-        <!--</vue-fix-dom>-->
+        <!--</div>-->
         <!--<div slot="content" class="fill" style="background: rgba(0,0,0,0.4);box-sizing: content-box">-->
-
             <!--<img style="margin: 10px" width="50px" src="https://cn.vuejs.org/images/logo.png"/>-->
             <!--<img style="margin: 10px;position: absolute;right: 0px;bottom: 0px" width="50px" src="https://cn.vuejs.org/images/logo.png"/>-->
         <!--</div>-->
@@ -64,7 +62,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script src="dist/vue-force-screen.js"></script>
-<script src="dist/vue-fix-dom.js"></script>
 <script>
     new Vue({
         el: '#app', data: {
@@ -74,12 +71,12 @@
         },
         methods: {
             update: function (event) {
-                this.$refs.fixdom.update()
+              //  this.$refs.fixdom.update()
             }
         },
 
         components: {
-            VueForceScreen: VueForceScreen, VueFixDom: VueFixDom
+            VueForceScreen: VueForceScreen
         }
     })
 </script>

@@ -1,6 +1,6 @@
 {
   "name": "vue-force-screen",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "force to landscape or portrait on different devices",
   "author": "johnnyGoo <157781745@qq.com>",
   "main": "dist/vue-force-screen.js",
@@ -9,7 +9,6 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "vue-fix-dom": "^1.0.1"
   },
   "devDependencies": {
     "vue": "^2.5.2",

@@ -1,20 +1,29 @@
 
 ###Usage
 ```
-npm install vue-fix-dom --save
+npm install vue-force-screen --save
 ```
 ```javascript
-import VueFixDom from 'vue-fix-dom'
+import VueForceScreen from 'vue-force-screen'
 ```
+
+###Slot
+```
+ slot="background"  //适应部分
+ slot="content"  //全屏显示部分(不会被裁切)
+```
+
 
 
 ###props:
 ```
-align:String 'align'/'default'
-width:String 'auto'/'*px' //只支持px后缀
-height:String 'auto'/'*px' //只支持px后缀
+align:String 'crop'/'default'
+type:String 'portrait'/'landscape'
+width:String '*px' //只支持px后缀
+height:String '*px' //只支持px后缀
 scroll:Boolean false/true //是否允许浏览器默认滑动
-transitionTime:String '0s'/'*s'/'*ms'
+block:Boolean false/true
+blockMessage:String ''
 
 ```
 ###methods
@@ -27,8 +36,10 @@ update()
 align
 width
 height
+block
+blockMessage
 
 ```
 
 ##注意
-单张图片 display:block 去掉下面多余的空白
+width height必须
