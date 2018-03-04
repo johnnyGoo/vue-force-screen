@@ -6,7 +6,7 @@
 
                 </slot>
             </div>
-            <div ref="content" style="left: 0px;top:0px;position: absolute">
+            <div v-if="content" ref="content" style="left: 0px;top:0px;position: absolute">
                 <slot name="content">
 
                 </slot>
@@ -148,6 +148,10 @@
             transitionTime: {
                 type: String,
                 default: '0s'
+            },
+            content:{
+                type: Boolean,
+                default: true
             }
         },
         data: function () {

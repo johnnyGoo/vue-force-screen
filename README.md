@@ -22,6 +22,7 @@ type:String 'portrait'/'landscape'
 width:String '*px' //只支持px后缀
 height:String '*px' //只支持px后缀
 scroll:Boolean false/true //是否允许浏览器默认滑动
+content:Boolean true/false
 
 ```
 ###methods

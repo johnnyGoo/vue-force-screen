@@ -46,7 +46,7 @@
         <!--</div>-->
     <!--</vue-force-screen>-->
 
-    <vue-force-screen ref="forcescreen" align="crop" width="1200px" height="750px" type="landscape" >
+    <vue-force-screen ref="forcescreen" :content="false" align="crop" width="1200px" height="750px" type="landscape" >
         <div slot="background" ref="fixdom" >
             <img style="display: block" width="100%" src="http://h5.2smart.cn/2017/samsung/media/bg.jpg"
                  @load="update"/>
