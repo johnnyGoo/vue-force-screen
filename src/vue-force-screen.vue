@@ -6,7 +6,7 @@
 
                 </slot>
             </div>
-            <div v-show="content" ref="content" style="left: 0px;top:0px;position: absolute">
+            <div v-if="content" ref="content" style="left: 0px;top:0px;position: absolute">
                 <slot name="content">
 
                 </slot>
@@ -156,7 +156,7 @@
         },
         data: function () {
             return {
-                child: null, parent: null, content: null, windowsize: {width: 0, height: 0}, removeEvent: function () {
+                child: null, parent: null, _content: null, windowsize: {width: 0, height: 0}, removeEvent: function () {
                 }, displayInfo: false
             }
         },
@@ -228,21 +228,24 @@
                 let scale = cssObj.scale
 
 
-                if (rotation === 0) {
-                    this.content.style.width = windowsize.width + 'px'
-                    this.content.style.height = windowsize.height + 'px'
-                    this.content.style.left = -windowsize.width / 2 + 'px';
-                    this.content.style.top = -windowsize.height / 2 + 'px';
-                    _cssToDom(this.content, fixCss('transform', ' rotate(' + (rotation) + 'deg) scale(' + 1 / scale + ')'));
-                } else {
-                    this.content.style.width = windowsize.height + 'px'
-                    this.content.style.height = windowsize.width + 'px'
-                    this.content.style.left = -windowsize.height / 2 + 'px';
-                    this.content.style.top = -windowsize.width / 2 + 'px';
-                    _cssToDom(this.content, fixCss('transform', ' rotate(' + (content_rotation + rotation) + 'deg) scale(' + 1 / scale + ')'));
+                if(this.content) {
 
+
+                    if (rotation === 0) {
+                        this._content.style.width = windowsize.width + 'px'
+                        this._content.style.height = windowsize.height + 'px'
+                        this._content.style.left = -windowsize.width / 2 + 'px';
+                        this._content.style.top = -windowsize.height / 2 + 'px';
+                        _cssToDom(this._content, fixCss('transform', ' rotate(' + (rotation) + 'deg) scale(' + 1 / scale + ')'));
+                    } else {
+                        this._content.style.width = windowsize.height + 'px'
+                        this._content.style.height = windowsize.width + 'px'
+                        this._content.style.left = -windowsize.height / 2 + 'px';
+                        this._content.style.top = -windowsize.width / 2 + 'px';
+                        _cssToDom(this._content, fixCss('transform', ' rotate(' + (content_rotation + rotation) + 'deg) scale(' + 1 / scale + ')'));
+
+                    }
                 }
-
                 // this.info.width=this.child.style.left;
                 // this.info.height=this.child.style.top;
 
@@ -260,9 +263,10 @@
         mounted: function () {
             let self = this;
 
+
             this.parent = this.$refs.parent;
             this.child = this.$refs.child;
-            this.content = this.$refs.content;
+            this._content = this.$refs.content;
             self.update();
             this.removeEvent = bindEvent(window, 'resize', function () {
                 self.update();
