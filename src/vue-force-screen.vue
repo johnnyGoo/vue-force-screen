@@ -6,7 +6,7 @@
 
                 </slot>
             </div>
-            <div v-if="content" ref="content" style="left: 0px;top:0px;position: absolute">
+            <div v-show="content" ref="content" style="left: 0px;top:0px;position: absolute">
                 <slot name="content">
 
                 </slot>
